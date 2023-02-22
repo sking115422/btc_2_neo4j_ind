@@ -702,7 +702,7 @@ except:
     with open("checkpoint.json", "w") as outfile:
         outfile.write(tmp)
         
-    fail_str = getTimeStamp() + " IMPORT EXITED EARLY > Dat file : " + str(df_start) + " > iter : " + str(iter_start) + " > blk num : " + str(bn_start)
+    fail_str = getTimeStamp() + " IMPORT EXITED EARLY > iter : " + str(iter_start) + " > dat file : " + str(df_start) + " > blk num : " + str(bn_start)
     err = traceback.format_exc()
         
     logger.debug("")
