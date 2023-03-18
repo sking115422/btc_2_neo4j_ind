@@ -42,11 +42,29 @@ ec = {
     "e_pass": "<insert_pass_here>"
 }
 
-# Writing initial values to checkpoint.json file
+# Writing initial values to email_conf.json file
 tmp = json.dumps(ec, indent=4)
 if not os.path.exists("./email_conf.json"):
     with open("email_conf.json", "w+") as outfile:
         outfile.write(tmp)
+
+### CREATING NEO4J DB CONFIG FILE
+
+# Creating dictionary of initial values
+# Default values for user and pass are "neo4j"
+n4jc = {
+    "host": "<server host name or IP here>",
+    "port": 7474,
+    "usr": "neo4j",
+    "pass": "neo4j"
+}
+
+# Writing initial values to neo4j_db_conf.json file
+tmp = json.dumps(n4jc, indent=4)
+if not os.path.exists("neo4j_db_conf.json"):
+    with open("neo4j_db_conf.json", "w+") as outfile:
+        outfile.write(tmp)
+
         
 ### CREATING VIRTUAL ENVIRONMENT
 
@@ -57,9 +75,11 @@ os_type = platform.system()
 if os_type == "Darwin" or os_type == "Linux":
     if not os.path.exists("./venv/"):
         print("creating virtual environment")
-        os.system("python3 -m venv ./venv")
+        os.system("pip install virtualenv")
+        os.system("virtualenv venv")
+        os.system("sudo apt-get update && sudo apt-get upgrade")
     print("activating virtual environment and installing necessary libraries")
-    os.system("source venv/bin/activate && pip install -r requirements_lin_mac.txt")
+    os.system(". venv/bin/activate && pip install -r requirements_lin_mac.txt")
 elif os_type == "Windows":
     if not os.path.exists("venv"):
         print("creating virtual environment")

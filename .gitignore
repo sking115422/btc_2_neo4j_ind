@@ -1,16 +1,25 @@
 
+
+# Directories
+
 blocks
 result
 venv
 test
 dump
 logs
-
+result_test
 .DS_Store
 .ipynb_checkpoints
+
+# Files
 
 checkpoint.json
 email_conf.json
 db_conf.json
+neo4j_db_conf.json
+main.py
+block_index.csv
+
 
 

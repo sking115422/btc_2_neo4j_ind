@@ -1,4 +1,4 @@
-# BTC 2 NEO4J
+# BTC 2 NEO4J TEST
 
 This package contains both a parser for blk.dat files and an import script for dumping the json into Neo4J graph database.
 
@@ -47,9 +47,10 @@ I obtained the files need by starting my own validation node for Bitcoin using B
 
 *** NOTE replace requirements.txt with requirements_lin_mac.txt for linux or mac users and requirements_win.txt for windows users ***
 
-### Add .DAT Files
+### Add Files
 
 Add desired BTCXXXXX.DAT files into blocks folder
+Add Final_hashlist.csv file into result_test folder
 
 ## Run Parser
 

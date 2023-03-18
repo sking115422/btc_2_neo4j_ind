@@ -3,16 +3,16 @@ import os
 import datetime
 import psycopg2
 
-def db_insert (dat_file_num, dat_file_name, blk_hash, unix_ts, ts, num_tx):
+def db_insert (dat_file_num, dat_file_name, blk_hash, hash_pos, unix_ts, ts, num_tx):
 
     q = f"""
-        INSERT INTO index_tab (dat_file_num, dat_file_name, blk_hash, unix_ts, ts, num_tx)
-        VALUES({dat_file_num},'{dat_file_name}','{blk_hash}', {unix_ts}, '{ts}', {num_tx});
+        INSERT INTO index_tab (dat_file_num, dat_file_name, blk_hash, hash_pos, unix_ts, ts, num_tx)
+        VALUES({dat_file_num},'{dat_file_name}','{blk_hash}',{hash_pos}, {unix_ts}, '{ts}', {num_tx});
     """
 
     return q
 
-input_dir = "./result/"
+input_dir = "/mnt/d/btc_dat_json/"
 fn_list = os.listdir(input_dir)
 
 f = open("./db_conf.json", "r")
@@ -46,11 +46,12 @@ for dat in fn_list:
     for i in range(0, len(df_json)):
 
         hash_ = df_json[i]["hash"]
+        hash_pos = i
         unix_time = df_json[i]["time"]
         time_stamp = datetime.datetime.fromtimestamp(unix_time)
         num_tx = df_json[i]["nTx"]
 
-        cursor.execute(db_insert(ind, blk_name, hash_, unix_time, time_stamp, num_tx))
+        cursor.execute(db_insert(ind, blk_name, hash_, hash_pos, unix_time, time_stamp, num_tx))
 
     conn.commit()
     
