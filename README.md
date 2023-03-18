@@ -1,6 +1,6 @@
 # BTC 2 NEO4J IND
 
-This package contains both a parser for blk.dat files and an import script for dumping the json into Neo4J graph database.
+This package contains a parser for blk.dat files, an index creation script for Postgres, and an import script for dumping the json into Neo4J graph database. This code uses a sorted CSV generated from the index in the Postgres database to import BTC block with in a data range in order into Neo4j.
 
 ## Get .DAT files
 
