@@ -1,4 +1,4 @@
-# BTC 2 NEO4J TEST
+# BTC 2 NEO4J IND
 
 This package contains both a parser for blk.dat files and an import script for dumping the json into Neo4J graph database.
 
